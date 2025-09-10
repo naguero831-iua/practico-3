@@ -2,21 +2,20 @@ package ejercicio_2;
 
 public class ColaArreglo {
     private int maxSize;
-    private int[] queueArray;
+    private Object[] queueArray;
     private int front;
     private int rear;
     private int nItems;
 
     public ColaArreglo(int size) {
         this.maxSize = size;
-        this.queueArray = new int[maxSize];
+        this.queueArray = new Object[maxSize];
         this.front = 0;
         this.rear = -1;
         this.nItems = 0;
     }
 
-
-    public void enqueue(int value) {
+    public void enqueue(Object value) {
         if (isFull()) {
             System.out.println("Queue is full. Cannot enqueue " + value);
             return;
@@ -28,12 +27,12 @@ public class ColaArreglo {
         nItems++;
     }
 
-    public int dequeue() {
+    public Object dequeue() {
         if (isEmpty()) {
             System.out.println("Queue is empty. Cannot dequeue.");
-            return -1; // Indicating queue is empty
+            return null; // Indicating queue is empty
         }
-        int temp = queueArray[front++];
+        Object temp = queueArray[front++];
         if (front == maxSize) { // wrap around
             front = 0;
         }
@@ -41,10 +40,10 @@ public class ColaArreglo {
         return temp;
     }
 
-    public int top() {
+    public Object top() {
         if (isEmpty()) {
             System.out.println("Queue is empty. Cannot retrieve top.");
-            return -1; // Indicating queue is empty
+            return null; // Indicating queue is empty
         }
         return queueArray[front];
     }
